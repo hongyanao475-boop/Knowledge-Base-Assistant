@@ -170,8 +170,8 @@ REDIS_ENABLED=false
 如果使用本机已经创建好的 Conda 环境：
 
 ```powershell
-cd D:\大四上\assistance\backend
-C:\Users\ohhy\.conda\envs\rag311\python.exe -m uvicorn main:app --reload --port 8080
+cd D:\assistance\backend
+C:\Users\name\.conda\envs\rag311\python.exe -m uvicorn main:app --reload --port 8080
 ```
 
 通用 Python 3.11 启动方式：
@@ -266,52 +266,3 @@ http://localhost:5173
 ### 6. 日志系统
 
 后端增加了请求日志中间件，记录请求路径、状态码、接口耗时和异常信息，便于排查 RAG 链路中的问题。
-
-## 简历描述
-
-基于 FastAPI + Vue 3 + LangChain + ChromaDB + 智谱 GLM-4 构建企业风格私有知识库 RAG 问答系统，支持用户认证、文档上传、后台向量化、用户级知识库隔离、检索增强生成、来源追踪、缓存限流和容器化部署。
-
-## 简历要点
-
-- 实现完整 RAG 链路，包括文档解析、文本切块、Embedding 向量化、ChromaDB 向量存储、相似度检索、Prompt 组装和 GLM-4 回答生成。
-- 设计 JWT 用户认证与多用户知识库隔离机制，在 ChromaDB metadata 中写入 `user_id/document_id`，并在检索阶段按用户过滤，避免跨用户数据召回。
-- 使用 FastAPI BackgroundTasks 将文档解析、Embedding 和向量索引构建异步化，避免上传接口长时间阻塞。
-- 设计 Redis 热门问答缓存和用户级请求限流，降低重复问题的大模型调用成本，提升 AI 接口稳定性。
-- 使用 Docker Compose 编排前端、后端和 Redis 服务，并通过环境变量管理 API Key、数据库路径、上传目录和向量库持久化路径。
-
-## GitHub 上传注意事项
-
-不要上传：
-
-```text
-.env
-node_modules/
-dist/
-__pycache__/
-backend/data/
-backend/server.out.log
-backend/server.err.log
-chroma_private_db/
-my_private_knowledge/
-```
-
-建议上传：
-
-```text
-README.md
-README.zh-CN.md
-.gitignore
-.env.example
-docker-compose.yml
-backend/app/
-backend/main.py
-backend/config.py
-backend/requirements.txt
-backend/Dockerfile
-rag-vue-ui/src/
-rag-vue-ui/package.json
-rag-vue-ui/package-lock.json
-rag-vue-ui/vite.config.js
-rag-vue-ui/Dockerfile
-rag-vue-ui/nginx.conf
-```
