@@ -156,8 +156,8 @@ Use Python 3.11. Do not use Python 3.14 because many AI/RAG dependencies are not
 If using the Conda environment created during development:
 
 ```powershell
-cd D:\大四上\assistance\backend
-C:\Users\ohhy\.conda\envs\rag311\python.exe -m uvicorn main:app --reload --port 8080
+cd D:\assistance\backend
+C:\Users\name\.conda\envs\rag311\python.exe -m uvicorn main:app --reload --port 8080
 ```
 
 Generic Python 3.11 setup:
@@ -227,20 +227,3 @@ http://localhost:5173
 
 - `POST /api/v1/chat/ask`
 
-## Resume Description
-
-Built an enterprise-style private knowledge base RAG Q&A system using FastAPI, Vue 3, LangChain, ChromaDB, and Zhipu GLM-4. The system supports user authentication, document upload, background vector indexing, user-level knowledge isolation, retrieval-augmented generation, source tracing, Redis-ready cache and rate limiting, and Docker-based deployment.
-
-## Resume Bullet Points
-
-- Implemented a complete RAG pipeline with document parsing, text splitting, ZhipuAI Embedding, ChromaDB vector storage, similarity retrieval, prompt assembly, and GLM-4 answer generation.
-- Designed JWT authentication and user-level knowledge base isolation by storing `user_id` and `document_id` in ChromaDB metadata and filtering retrieval results per authenticated user.
-- Added asynchronous document indexing with FastAPI BackgroundTasks to avoid blocking upload requests during parsing, embedding, and vector persistence.
-- Introduced Redis-ready hot question cache and user-level request rate limiting to reduce repeated LLM calls and improve API stability.
-- Containerized the frontend, backend, and Redis services with Docker Compose and added environment-based configuration for API keys, database path, upload storage, and Chroma persistence.
-
-## Notes
-
-- Never commit `.env`, uploaded documents, ChromaDB data, SQLite databases, logs, or `node_modules`.
-- Use Python 3.11 for the backend.
-- Use `npm.cmd` on Windows PowerShell if `npm run dev` is blocked by execution policy.
